@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import tensorflow as tf
 
@@ -20,8 +22,18 @@ class DataGenerator(tf.keras.utils.Sequence):
         Loads the paths to the images and their corresponding labels from the database directory
         """
         # TODO your code here
-        self.data = None #array[images]
-        self.labels = None #array[classes]
+        self.data = [] #array[images]
+        self.labels = [] #array[classes]
+
+        for image_folder in os.listdir(self.db_dir):
+            for file in os.listdir(os.path.join(self.db_dir, image_folder)):
+                if file.endswith(".png"):
+                    basename = file[:-4]
+                    label_path = os.path.join(self.db_dir, basename+".txt")
+                    image_path = os.path.join(self.db_dir, basename+".png")
+                    self.data.append(image_path)
+                    self.labels.append(label_path)
+
         return self.data, self.labels
 
     def __len__(self):
