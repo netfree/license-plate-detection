@@ -46,7 +46,8 @@ class DatasetGateway(object):
         return data, labels
 
 
-dataset_gateway = DatasetGateway(r"D:\UFPR-ALPR dataset\testing")
+dataset_gateway = DatasetGateway(r"C:\Storage\Facultate\Semester 5\Computer_Vision_and_Deep_Learning\Labs\License_plate_detection\UFPR-ALPR\UFPR-ALPR dataset\testing")
 data, labels = dataset_gateway.get_all_paths()
 labels = [DatasetGateway.get_label(path) for path in labels]
-print(len(labels))
+print(labels[0])
+print(data[0])
