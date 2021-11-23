@@ -7,6 +7,13 @@ class DatasetGateway(object):
         self.db_path = db_path
         pass
 
+    @staticmethod
+    def get_label(self, path):
+        pass
+
+    def get_image(self):
+        pass
+
     def get_all_paths(self):
         """
 
@@ -29,5 +36,4 @@ class DatasetGateway(object):
 
 dataset_gateway = DatasetGateway(r"D:\UFPR-ALPR dataset\testing")
 data, labels = dataset_gateway.get_all_paths()
-print(data)
-print(labels)
+labels = [DatasetGateway.get_label(path) for path in labels]
